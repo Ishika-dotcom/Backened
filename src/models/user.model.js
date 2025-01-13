@@ -9,28 +9,28 @@ const userSchema = new Schema(
             required: true,
             unique: true,
             lowercase: true,
-            trim: true,
+            trim: true, 
             index: true
         },
         email: {
             type: String,
             required: true,
             unique: true,
-            lowercase: true,
-            trim: true
+            lowecase: true,
+            trim: true, 
         },
-        fullName:{
+        fullName: {
             type: String,
             required: true,
-            trim: true,
+            trim: true, 
             index: true
         },
         avatar: {
-            type: String,
-            required: true
+            type: String, // cloudinary url
+            required: true,
         },
         coverImage: {
-            type: String
+            type: String, // cloudinary url
         },
         watchHistory: [
             {
@@ -77,11 +77,11 @@ userSchema.methods.generateAccessToken = function(){
         }
     )
 }
-
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
             _id: this._id,
+            
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
